@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnl6rftd2x458"
-path="res://.godot/imported/planePrototype.png-56c88d86497dc897cb44cdade98c7b20.ctex"
+uid="uid://b11hkv0njxo0h"
+path="res://.godot/imported/PlayerModelFinal.png-1cb1e7ba25d51a03126dc6cb7ddec8ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/planePrototype.png"
-dest_files=["res://.godot/imported/planePrototype.png-56c88d86497dc897cb44cdade98c7b20.ctex"]
+source_file="res://Art/PlayerModelFinal.png"
+dest_files=["res://.godot/imported/PlayerModelFinal.png-1cb1e7ba25d51a03126dc6cb7ddec8ec.ctex"]
 
 [params]
 
