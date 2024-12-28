@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://i1iwedi4xvsh"]
+
+[ext_resource type="Script" path="res://asteroid.gd" id="1_083qk"]
+[ext_resource type="Texture2D" uid="uid://j7it12x37v36" path="res://Art/asteroidNeutral.png" id="1_yq4tp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gql1m"]
+radius = 19.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_awy5i"]
+radius = 78.1601
+
+[node name="Asteroid" type="Area2D"]
+script = ExtResource("1_083qk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_yq4tp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gql1m")
+
+[node name="MagneticField" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagneticField"]
+shape = SubResource("CircleShape2D_awy5i")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="MagneticField" to="." method="_on_area_2d_area_entered"]

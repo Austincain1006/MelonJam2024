@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 @export var speed = 220
 @export var rotateSpeed = 4.0
-@onready var ionScene : PackedScene
+@export var ionScene : PackedScene
 var rotationDirection
 var cannonFired
 
@@ -27,10 +27,15 @@ func fire(charge):
 	if cannonFired:
 		return
 	
+	var ion = ionScene.instantiate()
+	
 	if charge:
-		print("+")
+		ion.setCharge(true)
 	else:
-		print("-")
+		ion.setCharge(false)
+		
+	owner.add_child(ion)
+	ion.transform = $CannonBarrel.global_transform
 	
 	cannonFired = true
 	$CannonTimer.start()

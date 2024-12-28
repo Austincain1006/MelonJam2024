@@ -21,6 +21,7 @@ func _physics_process(delta):
 
 
 func setCharge(charge):
+	print(charge)
 	isPositiveCharge = charge
 	# Set Texture of Ion to Match Charge
 	if charge == false:
@@ -40,3 +41,7 @@ func _on_body_entered(body):
 		queue_free()
 	else:
 		print("Collision!")
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
