@@ -1,3 +1,5 @@
+# ion.gd   by Austin Cain @ 12/27/2024
+# Simulates charged particle. Has collisions and is affected by magnetic fields.
 extends Area2D
 
 signal playerHit
@@ -6,15 +8,11 @@ signal playerHit
 var velocity
 var isPositiveCharge
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	velocity = Vector2.ZERO
 	setCharge(true)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _physics_process(delta):
@@ -24,6 +22,7 @@ func _physics_process(delta):
 
 func setCharge(charge):
 	isPositiveCharge = charge
+	# Set Texture of Ion to Match Charge
 	if charge == false:
 		$Sprite2D.texture = load("res://Art/IonNegative.png")
 	else:
@@ -34,6 +33,7 @@ func setVelocity(newVel):
 	velocity = newVel
 
 
+# Collision Handler
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		playerHit.emit()

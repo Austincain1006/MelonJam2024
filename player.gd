@@ -1,3 +1,5 @@
+# player.gd   by Austin Cain @ 12/27/2024
+# Player character, handles inputs, movements, and cannon fire.
 extends CharacterBody2D
 
 @export var speed = 220
@@ -13,12 +15,14 @@ func _ready():
 
 
 func _process(delta):
+	# Get Mouse Input for Cannon Firing
 	if Input.is_action_pressed("FirePositive"):
 		fire(true)
 	elif Input.is_action_pressed("FireNegative"):
 		fire(false)
 
 
+# Fire Ion Cannon
 func fire(charge):
 	if cannonFired:
 		return
