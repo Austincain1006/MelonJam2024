@@ -18,7 +18,6 @@ func _process(delta):
 	position += velocity.normalized() * speed * delta
 
 
-
 func setCharge(charge):
 	print(charge)
 	isPositiveCharge = charge
@@ -54,14 +53,22 @@ func magneticForce(fields):
 	for f in fields:
 		if !f.is_in_group("PositiveField") && !f.is_in_group("NegativeField"):
 			return
+		
 		var fPos = f.global_position
 		var difference = global_position - fPos
 		var force = difference.normalized() * f.get_parent().fieldMagnitude
+		
 		if !shouldAttract(isPositiveCharge, f.is_in_group("PositiveField")):
 			force *= -1
-		netForce += force * 0.01
+		
+		var distance = (f.get_parent().magneticRadius - difference.length()) / f.get_parent().magneticRadius
+		if distance <= 0:
+			distance = 0
+		#setSpeed(speed - distance)
+		netForce += force * distance
+		
 		print(netForce)
-		print(difference.length)
+		print(distance)
 		print("====")
 	
 	setVelocity(velocity + netForce)

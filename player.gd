@@ -7,7 +7,8 @@ extends CharacterBody2D
 @export var ionScene : PackedScene
 var rotationDirection
 var cannonFired
-var fieldMagnitude = 10
+var fieldMagnitude = 0.1
+var magneticRadius = 50
 
 
 func _ready():

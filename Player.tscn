@@ -6,11 +6,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_0m041"]
 radius = 33.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4kpxg"]
-radius = 41.0122
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lli7"]
+size = Vector2(250, 125)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_as04n"]
-radius = 40.0125
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tgqcn"]
+size = Vector2(250, 125)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_ldy8u")
@@ -27,13 +27,15 @@ shape = SubResource("CircleShape2D_0m041")
 position = Vector2(0, -36)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PositivePole"]
-shape = SubResource("CircleShape2D_4kpxg")
+position = Vector2(0, -27)
+shape = SubResource("RectangleShape2D_4lli7")
 
 [node name="NegativePole" type="Area2D" parent="." groups=["NegativeField"]]
 position = Vector2(0, 36)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NegativePole"]
-shape = SubResource("CircleShape2D_as04n")
+position = Vector2(0, 26)
+shape = SubResource("RectangleShape2D_tgqcn")
 
 [node name="CannonTimer" type="Timer" parent="."]
 wait_time = 2.0
