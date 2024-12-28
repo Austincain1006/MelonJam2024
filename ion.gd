@@ -6,18 +6,17 @@ signal playerHit
 
 @export var speed = 200
 var velocity
-var isPositiveCharge
+var isPositiveCharge = true
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	velocity = Vector2.ZERO
-	setCharge(true)
+	velocity = Vector2(1,0)
 
+func _process(delta):
+	magneticForce(get_overlapping_areas())
+	position += velocity.normalized() * speed * delta
 
-func _physics_process(delta):
-	velocity = velocity.normalized() * speed
-	position += velocity * delta
 
 
 func setCharge(charge):
@@ -33,6 +32,8 @@ func setCharge(charge):
 func setVelocity(newVel):
 	velocity = newVel
 
+func setSpeed(newSpeed):
+	speed = newSpeed
 
 # Collision Handler
 func _on_body_entered(body):
@@ -45,3 +46,29 @@ func _on_body_entered(body):
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
+
+
+func magneticForce(fields):
+	var netForce = Vector2.ZERO
+	#print("called")
+	for f in fields:
+		if !f.is_in_group("PositiveField") && !f.is_in_group("NegativeField"):
+			return
+		var fPos = f.global_position
+		var difference = global_position - fPos
+		var force = difference.normalized() * f.get_parent().fieldMagnitude
+		if !shouldAttract(isPositiveCharge, f.is_in_group("PositiveField")):
+			force *= -1
+		netForce += force * 0.01
+		print(netForce)
+		print(difference.length)
+		print("====")
+	
+	setVelocity(velocity + netForce)
+
+
+func shouldAttract(ionCharge, fieldCharge):
+	if ionCharge == fieldCharge:
+		return true
+	else:
+		return false

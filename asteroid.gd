@@ -3,6 +3,7 @@ extends Area2D
 var isPositiveCharge
 @export var speed = 200
 var velocity
+var fieldMagnitude = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,8 +25,12 @@ func setCharge(charge):
 	isPositiveCharge = charge
 	if charge:
 		$Sprite2D.texture = load("res://Art/asteroidPositive.png")
+		$MagneticField.add_to_group("PositiveField")
+		$MagneticField.remove_from_group("NegativeField")
 	if !charge:
 		$Sprite2D.texture = load("res://Art/asteroidNegative.png")
+		$MagneticField.add_to_group("NegativeField")
+		$MagneticField.remove_from_group("PositiveField")
 
 
 

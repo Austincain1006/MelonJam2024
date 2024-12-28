@@ -23,13 +23,13 @@ texture = ExtResource("2_s5k7j")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0m041")
 
-[node name="PositivePole" type="Area2D" parent="."]
+[node name="PositivePole" type="Area2D" parent="." groups=["PositiveField"]]
 position = Vector2(0, -36)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PositivePole"]
 shape = SubResource("CircleShape2D_4kpxg")
 
-[node name="NegativePole" type="Area2D" parent="."]
+[node name="NegativePole" type="Area2D" parent="." groups=["NegativeField"]]
 position = Vector2(0, 36)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NegativePole"]

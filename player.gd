@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var ionScene : PackedScene
 var rotationDirection
 var cannonFired
+var fieldMagnitude = 10
 
 
 func _ready():
@@ -20,6 +21,9 @@ func _process(delta):
 		fire(true)
 	elif Input.is_action_pressed("FireNegative"):
 		fire(false)
+	
+	for x in $PositivePole.get_overlapping_areas():
+		magneticField(x, delta)
 
 
 # Fire Ion Cannon
@@ -36,6 +40,7 @@ func fire(charge):
 		
 	owner.add_child(ion)
 	ion.transform = $CannonBarrel.global_transform
+	#ion.setVelocity($CannonBarrel.transform.forward)
 	
 	cannonFired = true
 	$CannonTimer.start()
@@ -54,25 +59,17 @@ func getInput():
 
 # Affects Ions when near Positive Pole
 func _on_positive_pole_area_entered(area):
-	if area.is_in_group("Ion"):
-		if area.isPositiveCharge:
-			print("Positive")
-		else:
-			print("Negative")
-	else:
-		print("Other Body Entered")
+	pass
 
 
 # Affects Ions when near Negative Pole
 func _on_negative_pole_area_entered(area):
-	if area.is_in_group("Ion"):
-		if area.isPositiveCharge:
-			print("Positive")
-		if !area.isPositiveCharge:
-			print("Negative")
-	else:
-		print("Other Body Entered")
+	pass
 
 
 func _on_cannon_timer_timeout():
 	cannonFired = false
+
+
+func magneticField(body, delta):
+	pass
