@@ -1,7 +1,9 @@
 # main.gd   by Austin Cain @ 12/29/2024
 extends Node
 
-
+@export var enemyScene : PackedScene
+var numEnemies = 0
+var score = 0
 
 func getNavMeshArray():
 	var numRows = 7
@@ -27,3 +29,27 @@ func getNavMeshArray():
 			#print(navMesh[c][r])
 	
 	return navMesh
+
+
+func spawnEnemy():
+	var enemy = enemyScene.instantiate()
+	
+	# Get Random Spawnpoint
+	$EnemySpawner/EnemySpawnerPath.progress_ratio = randf()
+	enemy.global_position = $EnemySpawner/EnemySpawnerPath.global_position
+	
+	# Spawn Enemey and Set Random Destination
+	add_child(enemy)
+	enemy.setDestination(enemy.getRandomNavPoint().global_position)
+
+
+func _on_enemy_spawn_timer_timeout():
+	print("ENEMY SPAWNED")
+	if numEnemies <= 5:
+		spawnEnemy()
+		numEnemies += 1
+
+
+func _on_enemy_enemy_destroyed():
+	score += 1
+	numEnemies += -1

@@ -10,7 +10,6 @@ var magneticRadius = 50
 var ionScene : PackedScene
 var speed = 4000
 var destination
-var oldVelocity = Vector2.ZERO
 
 func _ready():
 	playerReference = get_tree().get_first_node_in_group("Player")
@@ -20,10 +19,9 @@ func _ready():
 
 func _physics_process(delta):
 	velocity = position.direction_to(destination) * speed * delta
-	print(destination, velocity)
-	if !(velocity == oldVelocity * -1):
-		move_and_slide()	# This should be removing jitter but it isnt; fix later
-	oldVelocity = velocity
+	# Only Move when Far from Destination (Prevents Jitter)
+	if !((position - destination).length() < 1):
+		move_and_slide()
 
 # Called when Enemy is Hit
 func kill():
@@ -61,3 +59,7 @@ func getRandomNavPoint():
 # Make Enemy Move to Random Point in NavMesh
 func _on_move_timer_timeout():
 	destination = getRandomNavPoint().global_position
+
+
+func setDestination(dest):
+	destination = dest
