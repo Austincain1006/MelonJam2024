@@ -34,11 +34,11 @@ position = Vector2(0, 63)
 shape = SubResource("RectangleShape2D_o5f5k")
 
 [node name="CannonTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 4.0
 autostart = true
 
 [node name="MoveTimer" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 5.0
 autostart = true
 
 [connection signal="timeout" from="CannonTimer" to="." method="_on_cannon_timer_timeout"]

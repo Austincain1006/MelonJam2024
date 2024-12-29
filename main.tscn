@@ -20,216 +20,279 @@ position = Vector2(-16, 8)
 
 [node name="NavPoint" type="Marker2D" parent="NavMesh/Col1"]
 position = Vector2(50, 42)
+gizmo_extents = 2.0
 
 [node name="NavPoint2" type="Marker2D" parent="NavMesh/Col1"]
 position = Vector2(50, 106)
+gizmo_extents = 2.0
 
 [node name="NavPoint3" type="Marker2D" parent="NavMesh/Col1"]
 position = Vector2(50, 170)
+gizmo_extents = 2.0
 
 [node name="NavPoint4" type="Marker2D" parent="NavMesh/Col1"]
 position = Vector2(50, 234)
+gizmo_extents = 2.0
 
 [node name="NavPoint5" type="Marker2D" parent="NavMesh/Col1"]
 position = Vector2(50, 298)
+gizmo_extents = 2.0
 
 [node name="NavPoint6" type="Marker2D" parent="NavMesh/Col1"]
 position = Vector2(50, 362)
+gizmo_extents = 2.0
 
 [node name="NavPoint7" type="Marker2D" parent="NavMesh/Col1"]
 position = Vector2(50, 426)
+gizmo_extents = 2.0
 
 [node name="Col2" type="Node2D" parent="NavMesh"]
 position = Vector2(64, 8)
 
 [node name="NavPoint" type="Marker2D" parent="NavMesh/Col2"]
 position = Vector2(50, 42)
+gizmo_extents = 2.0
 
 [node name="NavPoint2" type="Marker2D" parent="NavMesh/Col2"]
 position = Vector2(50, 106)
+gizmo_extents = 2.0
 
 [node name="NavPoint3" type="Marker2D" parent="NavMesh/Col2"]
 position = Vector2(50, 170)
+gizmo_extents = 2.0
 
 [node name="NavPoint4" type="Marker2D" parent="NavMesh/Col2"]
 position = Vector2(50, 234)
+gizmo_extents = 2.0
 
 [node name="NavPoint5" type="Marker2D" parent="NavMesh/Col2"]
 position = Vector2(50, 298)
+gizmo_extents = 2.0
 
 [node name="NavPoint6" type="Marker2D" parent="NavMesh/Col2"]
 position = Vector2(50, 362)
+gizmo_extents = 2.0
 
 [node name="NavPoint7" type="Marker2D" parent="NavMesh/Col2"]
 position = Vector2(50, 426)
+gizmo_extents = 2.0
 
 [node name="Col3" type="Node2D" parent="NavMesh"]
 position = Vector2(144, 8)
 
 [node name="NavPoint" type="Marker2D" parent="NavMesh/Col3"]
 position = Vector2(50, 42)
+gizmo_extents = 2.0
 
 [node name="NavPoint2" type="Marker2D" parent="NavMesh/Col3"]
 position = Vector2(50, 106)
+gizmo_extents = 2.0
 
 [node name="NavPoint3" type="Marker2D" parent="NavMesh/Col3"]
 position = Vector2(50, 170)
+gizmo_extents = 2.0
 
 [node name="NavPoint4" type="Marker2D" parent="NavMesh/Col3"]
 position = Vector2(50, 234)
+gizmo_extents = 2.0
 
 [node name="NavPoint5" type="Marker2D" parent="NavMesh/Col3"]
 position = Vector2(50, 298)
+gizmo_extents = 2.0
 
 [node name="NavPoint6" type="Marker2D" parent="NavMesh/Col3"]
 position = Vector2(50, 362)
+gizmo_extents = 2.0
 
 [node name="NavPoint7" type="Marker2D" parent="NavMesh/Col3"]
 position = Vector2(50, 426)
+gizmo_extents = 2.0
 
 [node name="Col4" type="Node2D" parent="NavMesh"]
 position = Vector2(224, 8)
 
 [node name="NavPoint" type="Marker2D" parent="NavMesh/Col4"]
 position = Vector2(50, 42)
+gizmo_extents = 2.0
 
 [node name="NavPoint2" type="Marker2D" parent="NavMesh/Col4"]
 position = Vector2(50, 106)
+gizmo_extents = 2.0
 
 [node name="NavPoint3" type="Marker2D" parent="NavMesh/Col4"]
 position = Vector2(50, 170)
+gizmo_extents = 2.0
 
 [node name="NavPoint4" type="Marker2D" parent="NavMesh/Col4"]
 position = Vector2(50, 234)
+gizmo_extents = 2.0
 
 [node name="NavPoint5" type="Marker2D" parent="NavMesh/Col4"]
 position = Vector2(50, 298)
+gizmo_extents = 2.0
 
 [node name="NavPoint6" type="Marker2D" parent="NavMesh/Col4"]
 position = Vector2(50, 362)
+gizmo_extents = 2.0
 
 [node name="NavPoint7" type="Marker2D" parent="NavMesh/Col4"]
 position = Vector2(50, 426)
+gizmo_extents = 2.0
 
 [node name="Col5" type="Node2D" parent="NavMesh"]
 position = Vector2(304, 8)
 
 [node name="NavPoint" type="Marker2D" parent="NavMesh/Col5"]
 position = Vector2(50, 42)
+gizmo_extents = 2.0
 
 [node name="NavPoint2" type="Marker2D" parent="NavMesh/Col5"]
 position = Vector2(50, 106)
+gizmo_extents = 2.0
 
 [node name="NavPoint3" type="Marker2D" parent="NavMesh/Col5"]
 position = Vector2(50, 170)
+gizmo_extents = 2.0
 
 [node name="NavPoint4" type="Marker2D" parent="NavMesh/Col5"]
 position = Vector2(50, 234)
+gizmo_extents = 2.0
 
 [node name="NavPoint5" type="Marker2D" parent="NavMesh/Col5"]
 position = Vector2(50, 298)
+gizmo_extents = 2.0
 
 [node name="NavPoint6" type="Marker2D" parent="NavMesh/Col5"]
 position = Vector2(50, 362)
+gizmo_extents = 2.0
 
 [node name="NavPoint7" type="Marker2D" parent="NavMesh/Col5"]
 position = Vector2(50, 426)
+gizmo_extents = 2.0
 
 [node name="Col6" type="Node2D" parent="NavMesh"]
 position = Vector2(384, 8)
 
 [node name="NavPoint" type="Marker2D" parent="NavMesh/Col6"]
 position = Vector2(50, 42)
+gizmo_extents = 2.0
 
 [node name="NavPoint2" type="Marker2D" parent="NavMesh/Col6"]
 position = Vector2(50, 106)
+gizmo_extents = 2.0
 
 [node name="NavPoint3" type="Marker2D" parent="NavMesh/Col6"]
 position = Vector2(50, 170)
+gizmo_extents = 2.0
 
 [node name="NavPoint4" type="Marker2D" parent="NavMesh/Col6"]
 position = Vector2(50, 234)
+gizmo_extents = 2.0
 
 [node name="NavPoint5" type="Marker2D" parent="NavMesh/Col6"]
 position = Vector2(50, 298)
+gizmo_extents = 2.0
 
 [node name="NavPoint6" type="Marker2D" parent="NavMesh/Col6"]
 position = Vector2(50, 362)
+gizmo_extents = 2.0
 
 [node name="NavPoint7" type="Marker2D" parent="NavMesh/Col6"]
 position = Vector2(50, 426)
+gizmo_extents = 2.0
 
 [node name="Col7" type="Node2D" parent="NavMesh"]
 position = Vector2(464, 8)
 
 [node name="NavPoint" type="Marker2D" parent="NavMesh/Col7"]
 position = Vector2(50, 42)
+gizmo_extents = 2.0
 
 [node name="NavPoint2" type="Marker2D" parent="NavMesh/Col7"]
 position = Vector2(50, 106)
+gizmo_extents = 2.0
 
 [node name="NavPoint3" type="Marker2D" parent="NavMesh/Col7"]
 position = Vector2(50, 170)
+gizmo_extents = 2.0
 
 [node name="NavPoint4" type="Marker2D" parent="NavMesh/Col7"]
 position = Vector2(50, 234)
+gizmo_extents = 2.0
 
 [node name="NavPoint5" type="Marker2D" parent="NavMesh/Col7"]
 position = Vector2(50, 298)
+gizmo_extents = 2.0
 
 [node name="NavPoint6" type="Marker2D" parent="NavMesh/Col7"]
 position = Vector2(50, 362)
+gizmo_extents = 2.0
 
 [node name="NavPoint7" type="Marker2D" parent="NavMesh/Col7"]
 position = Vector2(50, 426)
+gizmo_extents = 2.0
 
 [node name="Col8" type="Node2D" parent="NavMesh"]
 position = Vector2(544, 8)
 
 [node name="NavPoint" type="Marker2D" parent="NavMesh/Col8"]
 position = Vector2(50, 42)
+gizmo_extents = 2.0
 
 [node name="NavPoint2" type="Marker2D" parent="NavMesh/Col8"]
 position = Vector2(50, 106)
+gizmo_extents = 2.0
 
 [node name="NavPoint3" type="Marker2D" parent="NavMesh/Col8"]
 position = Vector2(50, 170)
+gizmo_extents = 2.0
 
 [node name="NavPoint4" type="Marker2D" parent="NavMesh/Col8"]
 position = Vector2(50, 234)
+gizmo_extents = 2.0
 
 [node name="NavPoint5" type="Marker2D" parent="NavMesh/Col8"]
 position = Vector2(50, 298)
+gizmo_extents = 2.0
 
 [node name="NavPoint6" type="Marker2D" parent="NavMesh/Col8"]
 position = Vector2(50, 362)
+gizmo_extents = 2.0
 
 [node name="NavPoint7" type="Marker2D" parent="NavMesh/Col8"]
 position = Vector2(50, 426)
+gizmo_extents = 2.0
 
 [node name="Col9" type="Node2D" parent="NavMesh"]
 position = Vector2(624, 8)
 
 [node name="NavPoint" type="Marker2D" parent="NavMesh/Col9"]
 position = Vector2(50, 42)
+gizmo_extents = 2.0
 
 [node name="NavPoint2" type="Marker2D" parent="NavMesh/Col9"]
 position = Vector2(50, 106)
+gizmo_extents = 2.0
 
 [node name="NavPoint3" type="Marker2D" parent="NavMesh/Col9"]
 position = Vector2(50, 170)
+gizmo_extents = 2.0
 
 [node name="NavPoint4" type="Marker2D" parent="NavMesh/Col9"]
 position = Vector2(50, 234)
+gizmo_extents = 2.0
 
 [node name="NavPoint5" type="Marker2D" parent="NavMesh/Col9"]
 position = Vector2(50, 298)
+gizmo_extents = 2.0
 
 [node name="NavPoint6" type="Marker2D" parent="NavMesh/Col9"]
 position = Vector2(50, 362)
+gizmo_extents = 2.0
 
 [node name="NavPoint7" type="Marker2D" parent="NavMesh/Col9"]
 position = Vector2(50, 426)
+gizmo_extents = 2.0
 
 [node name="Enemy" parent="." instance=ExtResource("4_y53f3")]
-position = Vector2(104, 232)
+position = Vector2(392, 120)
