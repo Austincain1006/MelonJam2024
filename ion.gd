@@ -18,7 +18,6 @@ func _ready():
 
 func _process(delta):
 	magneticForce(get_overlapping_areas())
-	print("Ion Velocity", velocity.normalized())
 	position += velocity.normalized() * speed * delta
 
 
@@ -48,35 +47,32 @@ func _on_body_entered(body):
 		body.kill()
 		queue_free()
 	else:
-		print("Collision!")
+		pass
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	print("left")
 	queue_free()
 
 
-func magneticForce(fields):
+func magneticForce(array):
 	
 	var netForce = Vector2.ZERO
-	for f in fields:
-		#print("MagneticForce Called")
-		if !f.is_in_group("PositiveField") && !f.is_in_group("NegativeField"):
+	for field in array:
+		if !field.is_in_group("PositiveField") && !field.is_in_group("NegativeField"):
 			continue
-		if f.get_parent().is_in_group("Player") && immunityMask == 1:
+		if field.get_parent().is_in_group("Player") && immunityMask == 1:
 			continue
-		if f.get_parent().is_in_group("Enemy") && immunityMask == 2:
+		if field.get_parent().is_in_group("Enemy") && immunityMask == 2:
 			continue
-		#print("MagneticForce If Statements Worked")
 		
-		var fPos = f.global_position
-		var difference = global_position - fPos
-		var force = difference.normalized() * f.get_parent().fieldMagnitude
+		var fieldPos = field.global_position
+		var difference = global_position - fieldPos
+		var force = difference.normalized() * field.get_parent().fieldMagnitude
 		
-		if !shouldAttract(isPositiveCharge, f.is_in_group("PositiveField")):
+		if !shouldAttract(isPositiveCharge, field.is_in_group("PositiveField")):
 			force *= -1
-		var distance = f.get_parent().magneticRadius - difference.length() 
-		distance /= f.get_parent().magneticRadius
+		var distance = field.get_parent().magneticRadius - difference.length() 
+		distance /= field.get_parent().magneticRadius
 		if distance <= 0:
 			distance = 0
 			
