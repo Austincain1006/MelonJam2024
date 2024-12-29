@@ -15,8 +15,10 @@ func _ready():
 	velocity = Vector2(1,0)
 	immunityMask = 0
 
+
 func _process(delta):
 	magneticForce(get_overlapping_areas())
+	print("Ion Velocity", velocity.normalized())
 	position += velocity.normalized() * speed * delta
 
 
@@ -32,18 +34,18 @@ func setCharge(charge):
 func setVelocity(newVel):
 	velocity = newVel
 
+
 func setSpeed(newSpeed):
 	speed = newSpeed
+
 
 # Collision Handler
 func _on_body_entered(body):
 	if body.is_in_group("Player") && immunityMask != 1:
 		playerHit.emit()
-		print("AAH")
 		queue_free()
 	if body.is_in_group("Enemy") && immunityMask != 2:
 		body.kill()
-		print("AAH")
 		queue_free()
 	else:
 		print("Collision!")
@@ -58,21 +60,21 @@ func magneticForce(fields):
 	
 	var netForce = Vector2.ZERO
 	for f in fields:
+		#print("MagneticForce Called")
 		if !f.is_in_group("PositiveField") && !f.is_in_group("NegativeField"):
 			continue
 		if f.get_parent().is_in_group("Player") && immunityMask == 1:
 			continue
 		if f.get_parent().is_in_group("Enemy") && immunityMask == 2:
 			continue
+		#print("MagneticForce If Statements Worked")
 		
 		var fPos = f.global_position
 		var difference = global_position - fPos
-		print("Diff", difference)
 		var force = difference.normalized() * f.get_parent().fieldMagnitude
 		
 		if !shouldAttract(isPositiveCharge, f.is_in_group("PositiveField")):
 			force *= -1
-		print(force)
 		var distance = f.get_parent().magneticRadius - difference.length() 
 		distance /= f.get_parent().magneticRadius
 		if distance <= 0:
@@ -81,7 +83,6 @@ func magneticForce(fields):
 		netForce += force * distance
 		
 	setVelocity(velocity + netForce)
-	print("=================")
 
 
 func shouldAttract(ionCharge, fieldCharge):
