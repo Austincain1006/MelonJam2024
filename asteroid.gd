@@ -1,3 +1,4 @@
+#asteroid.gd
 extends Area2D
 
 var isPositiveCharge

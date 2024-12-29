@@ -2,12 +2,12 @@
 # Player character, handles inputs, movements, and cannon fire.
 extends CharacterBody2D
 
-@export var speed = 220
+@export var speed = 200
 @export var rotateSpeed = 4.0
 @export var ionScene : PackedScene
 var rotationDirection
 var cannonFired
-var fieldMagnitude = 0.1
+var fieldMagnitude = 0.2
 var magneticRadius = 50
 
 
@@ -41,7 +41,8 @@ func fire(charge):
 		
 	owner.add_child(ion)
 	ion.transform = $CannonBarrel.global_transform
-	#ion.setVelocity($CannonBarrel.transform.forward)
+	ion.setMask(1)
+	ion.setVelocity(-$CannonBarrel.global_transform.x)
 	
 	cannonFired = true
 	$CannonTimer.start()

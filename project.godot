@@ -27,6 +27,7 @@ Ion=""
 Player=""
 PositiveField=""
 NegativeField=""
+Enemy=""
 
 [input]
 

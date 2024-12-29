@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cn3iy67pv1sl8"]
+
+[ext_resource type="Texture2D" uid="uid://byvhqr2213l2k" path="res://Art/Enemy.png" id="1_kbdl0"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_pv5fg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhqla"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4q65"]
+size = Vector2(250, 125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5f5k"]
+size = Vector2(250, 125)
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_pv5fg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qhqla")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_kbdl0")
+
+[node name="PositivePole" type="Area2D" parent="." groups=["PositiveField"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PositivePole"]
+position = Vector2(0, -62)
+shape = SubResource("RectangleShape2D_s4q65")
+
+[node name="NegativePole" type="Area2D" parent="." groups=["NegativeField"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NegativePole"]
+position = Vector2(0, 63)
+shape = SubResource("RectangleShape2D_o5f5k")
+
+[node name="CannonTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="CannonTimer" to="." method="_on_cannon_timer_timeout"]

@@ -1,16 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cn7ird88eupwv"]
+[gd_scene load_steps=5 format=3 uid="uid://cn7ird88eupwv"]
 
 [ext_resource type="PackedScene" uid="uid://cthywtjlqfrab" path="res://Player.tscn" id="1_2lql5"]
 [ext_resource type="PackedScene" uid="uid://bg1a2u5l6x3s5" path="res://ion.tscn" id="2_jvr20"]
 [ext_resource type="PackedScene" uid="uid://i1iwedi4xvsh" path="res://asteroid.tscn" id="3_pevas"]
+[ext_resource type="PackedScene" uid="uid://cn3iy67pv1sl8" path="res://enemy.tscn" id="4_y53f3"]
 
 [node name="Main" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_2lql5")]
 position = Vector2(665, 223)
 
-[node name="Ion" parent="." instance=ExtResource("2_jvr20")]
-position = Vector2(119, 227)
-
 [node name="Asteroid" parent="." instance=ExtResource("3_pevas")]
 position = Vector2(233, 93)
+
+[node name="Enemy" parent="." instance=ExtResource("4_y53f3")]
+position = Vector2(343, 228)
+
+[node name="Ion" parent="." instance=ExtResource("2_jvr20")]
+position = Vector2(11, 449)
