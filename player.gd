@@ -22,9 +22,6 @@ func _process(delta):
 		fire(true)
 	elif Input.is_action_pressed("FireNegative"):
 		fire(false)
-	
-	for x in $PositivePole.get_overlapping_areas():
-		magneticField(x, delta)
 
 
 # Fire Ion Cannon
@@ -38,7 +35,7 @@ func fire(charge):
 		ion.setCharge(true)
 	else:
 		ion.setCharge(false)
-		
+	
 	owner.add_child(ion)
 	ion.transform = $CannonBarrel.global_transform
 	ion.setMask(1)

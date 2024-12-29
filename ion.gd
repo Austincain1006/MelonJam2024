@@ -23,6 +23,7 @@ func _process(delta):
 
 func setCharge(charge):
 	isPositiveCharge = charge
+	
 	# Set Texture of Ion to Match Charge
 	if charge == false:
 		$Sprite2D.texture = load("res://Art/IonNegative.png")
@@ -55,9 +56,10 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 
 func magneticForce(array):
-	
 	var netForce = Vector2.ZERO
+	
 	for field in array:
+		# Determine if current Area2D should affect this Ion
 		if !field.is_in_group("PositiveField") && !field.is_in_group("NegativeField"):
 			continue
 		if field.get_parent().is_in_group("Player") && immunityMask == 1:
@@ -65,19 +67,20 @@ func magneticForce(array):
 		if field.get_parent().is_in_group("Enemy") && immunityMask == 2:
 			continue
 		
-		var fieldPos = field.global_position
-		var difference = global_position - fieldPos
+		# Get Direction of Magnetic Force
+		var difference = global_position - field.global_position
 		var force = difference.normalized() * field.get_parent().fieldMagnitude
 		
+		# Determine Polarity & Distance Scaling
 		if !shouldAttract(isPositiveCharge, field.is_in_group("PositiveField")):
 			force *= -1
 		var distance = field.get_parent().magneticRadius - difference.length() 
 		distance /= field.get_parent().magneticRadius
 		if distance <= 0:
 			distance = 0
-			
-		netForce += force * distance
 		
+		netForce += force * distance
+	
 	setVelocity(velocity + netForce)
 
 
