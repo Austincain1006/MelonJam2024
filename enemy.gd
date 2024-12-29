@@ -11,17 +11,20 @@ var ionScene : PackedScene
 var speed = 4000
 var destination
 
+
 func _ready():
 	playerReference = get_tree().get_first_node_in_group("Player")
 	navMesh = get_tree().get_root().get_node("Main").getNavMeshArray()
 	ionScene = load("res://ion.tscn")
 	destination = position
 
+
 func _physics_process(delta):
 	velocity = position.direction_to(destination) * speed * delta
 	# Only Move when Far from Destination (Prevents Jitter)
 	if !((position - destination).length() < 1):
 		move_and_slide()
+
 
 # Called when Enemy is Hit
 func kill():
@@ -52,7 +55,6 @@ func getRandomNavPoint():
 	# 7 rows, 9 cols
 	var row = randi_range(0, 6)
 	var col = randi_range(0, 8)
-	print(col, row)
 	return navMesh[col][row]
 
 

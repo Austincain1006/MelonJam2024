@@ -4,6 +4,8 @@ extends Node
 @export var enemyScene : PackedScene
 var numEnemies = 0
 var score = 0
+const MAX_ENEMIES = 5
+
 
 func getNavMeshArray():
 	var numRows = 7
@@ -38,18 +40,20 @@ func spawnEnemy():
 	$EnemySpawner/EnemySpawnerPath.progress_ratio = randf()
 	enemy.global_position = $EnemySpawner/EnemySpawnerPath.global_position
 	
-	# Spawn Enemey and Set Random Destination
+	# Spawn Enemey, Set Random Destination & Connect Signal
 	add_child(enemy)
 	enemy.setDestination(enemy.getRandomNavPoint().global_position)
+	enemy.enemyDestroyed.connect(enemyDestroyedObserver)
 
 
 func _on_enemy_spawn_timer_timeout():
-	print("ENEMY SPAWNED")
-	if numEnemies <= 5:
+	#print("ENEMY SPAWNED")
+	if numEnemies < MAX_ENEMIES:
 		spawnEnemy()
 		numEnemies += 1
 
 
-func _on_enemy_enemy_destroyed():
+func enemyDestroyedObserver():
 	score += 1
 	numEnemies += -1
+	print("ENEMY DEAD ", numEnemies)
