@@ -19,5 +19,5 @@ func setScore(newScore):
 func showGameOver():
 	$Message.text = "Game over!"
 	$Message.show()
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(2).timeout
 	$Button.show()

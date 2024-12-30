@@ -78,7 +78,7 @@ func endGame():
 	$HUD.showGameOver()
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
 		enemy.mayFire = false
-	
+	$GameOverSound.play()
 
 
 func _on_hud_play_button_pressed():
