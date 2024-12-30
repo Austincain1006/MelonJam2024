@@ -25,6 +25,9 @@ func _on_button_pressed():
 
 func setScore(newScore):
 	$Score.text = str(newScore)
+	if newScore > highScore:
+		highScore = newScore
+		$HighScore.text = "High Score: " + str(highScore)
 
 func showGameOver():
 	$Message.text = "Game over!"
