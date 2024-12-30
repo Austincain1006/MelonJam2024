@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cn7ird88eupwv"]
+[gd_scene load_steps=8 format=3 uid="uid://cn7ird88eupwv"]
 
 [ext_resource type="PackedScene" uid="uid://cthywtjlqfrab" path="res://Player.tscn" id="1_2lql5"]
 [ext_resource type="Script" path="res://main.gd" id="1_trih3"]
 [ext_resource type="PackedScene" uid="uid://bhjprg3ckgfnl" path="res://hud.tscn" id="4_kjf0n"]
 [ext_resource type="PackedScene" uid="uid://cn3iy67pv1sl8" path="res://enemy.tscn" id="4_y53f3"]
 [ext_resource type="AudioStream" uid="uid://bpthdmgbw27x5" path="res://Art/gameOver.wav" id="5_v86bp"]
+[ext_resource type="AudioStream" uid="uid://ce5oyu0pw6xi0" path="res://Art/explosion.wav" id="6_0tlkc"]
 
 [sub_resource type="Curve2D" id="Curve2D_rdftt"]
 _data = {
@@ -315,6 +316,11 @@ wait_time = 4.0
 
 [node name="GameOverSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_v86bp")
+volume_db = 5.0
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0tlkc")
+volume_db = 2.0
 
 [connection signal="playerHit" from="Player" to="." method="_on_player_player_hit"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

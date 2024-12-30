@@ -54,6 +54,7 @@ func _on_enemy_spawn_timer_timeout():
 
 
 func enemyDestroyedObserver():
+	$ExplosionSound.play()
 	score += 1
 	$HUD.setScore(score)
 	numEnemies += -1
