@@ -40,6 +40,7 @@ func _physics_process(delta):
 	move_and_slide()
 	global_position = global_position.clamp(boundaryStart, boundaryEnd)
 
+
 # Fire Ion Cannon
 func fire(charge):
 	if cannonFired:

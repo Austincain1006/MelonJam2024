@@ -319,7 +319,7 @@ curve = SubResource("Curve2D_rdftt")
 position = Vector2(-24, -24)
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 6.0
 
 [node name="HUD" parent="." instance=ExtResource("4_kjf0n")]
 

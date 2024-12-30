@@ -46,10 +46,12 @@ func _on_enemy_spawn_timer_timeout():
 	if numEnemies < enemyCap():
 		spawnEnemy()
 		numEnemies += 1
-		
+	
+	$EnemySpawnTimer.start()
+	
 	# Chance to Spawn Multiple Enemies if allowed
 	if (numEnemies < enemyCap() && randf() < 0.5):
-		get_tree().create_timer($EnemySpawnTimer.wait_time / randf_range(3, 8))
+		await get_tree().create_timer($EnemySpawnTimer.wait_time / randf_range(3, 8)).timeout
 		spawnEnemy()
 		numEnemies += 1
 
@@ -72,6 +74,7 @@ func startGame():
 	unFreezePlayer()
 	numEnemies = 0
 	score = 0
+	$EnemySpawnTimer.wait_time = 6
 	$HUD.setScore(score)
 
 
@@ -106,15 +109,20 @@ func _on_player_player_hit():
 
 # Returns the Enemy Cap, Scales with Player Score
 func enemyCap():
-	if score >= 3:
+	if score >= 5:
+		$EnemySpawnTimer.wait_time = 5.5
 		return 2
-	if score >= 7:
+	if score >= 10:
+		$EnemySpawnTimer.wait_time = 5
 		return 3
-	if score >= 12:
+	if score >= 16:
+		$EnemySpawnTimer.wait_time = 4.5
 		return 4
-	if score >= 20:
+	if score >= 25:
+		$EnemySpawnTimer.wait_time = 4
 		return 5
 	else:
+		$EnemySpawnTimer.wait_time = 6
 		return 1
 
 
