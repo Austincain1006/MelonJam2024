@@ -50,7 +50,7 @@ func shootCannon():
 	ion.setCharge(randi_range(0,1) == 1)
 	ion.setMask(2)
 	ion.setVelocity( (playerReference.position - position).normalized() )
-	
+	ion.creator = self
 	$IonBlasterSound.play()
 	
 	ion.add_to_group("Ion")

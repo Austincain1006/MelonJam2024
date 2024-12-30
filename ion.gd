@@ -8,6 +8,7 @@ var isPositiveCharge = true
 var immunityMask
 var fieldMagnitude = 0.05
 var magneticRadius = 64
+var creator
 
 
 # Called when the node enters the scene tree for the first time.
@@ -101,3 +102,9 @@ func shouldAttract(ionCharge, fieldCharge):
 
 func setMask(m):
 	immunityMask = m
+
+
+func _on_immunity_timer_timeout():
+	print(creator)
+	if !$MagneticField.get_overlapping_bodies().has(creator):
+		setMask(0)

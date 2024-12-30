@@ -56,6 +56,8 @@ func fire(charge):
 	owner.add_child(ion)
 	ion.transform = $CannonBarrel.global_transform
 	ion.setMask(1)
+	print(self)
+	ion.creator = self
 	ion.setVelocity(-$CannonBarrel.global_transform.x)
 	
 	$IonBlasterSound.play()
