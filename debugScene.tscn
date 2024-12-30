@@ -1,0 +1,339 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1wa4sh8ynj84"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_0qwjw"]
+[ext_resource type="PackedScene" uid="uid://cn3iy67pv1sl8" path="res://enemy.tscn" id="2_iglmq"]
+[ext_resource type="Texture2D" uid="uid://ni2v1hw6gh4w" path="res://Art/space4.png" id="3_3yoj2"]
+[ext_resource type="PackedScene" uid="uid://cthywtjlqfrab" path="res://Player.tscn" id="4_cs08a"]
+[ext_resource type="PackedScene" uid="uid://bhjprg3ckgfnl" path="res://hud.tscn" id="5_lcq48"]
+[ext_resource type="AudioStream" uid="uid://bpthdmgbw27x5" path="res://Art/gameOver.wav" id="6_gfwp1"]
+[ext_resource type="AudioStream" uid="uid://ce5oyu0pw6xi0" path="res://Art/explosion.wav" id="7_uwvox"]
+
+[sub_resource type="Curve2D" id="Curve2D_rdftt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 720, 480, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Main" type="Node"]
+script = ExtResource("1_0qwjw")
+enemyScene = ExtResource("2_iglmq")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(336, 240)
+scale = Vector2(2.83709, 1.8914)
+texture = ExtResource("3_3yoj2")
+
+[node name="Player" parent="." instance=ExtResource("4_cs08a")]
+position = Vector2(665, 223)
+
+[node name="Spawnpoint" type="Marker2D" parent="."]
+position = Vector2(350, 240)
+
+[node name="NavMesh" type="Node" parent="."]
+
+[node name="Col1" type="Node2D" parent="NavMesh"]
+position = Vector2(-16, 8)
+
+[node name="NavPoint" type="Marker2D" parent="NavMesh/Col1"]
+position = Vector2(50, 42)
+gizmo_extents = 2.0
+
+[node name="NavPoint2" type="Marker2D" parent="NavMesh/Col1"]
+position = Vector2(50, 106)
+gizmo_extents = 2.0
+
+[node name="NavPoint3" type="Marker2D" parent="NavMesh/Col1"]
+position = Vector2(50, 170)
+gizmo_extents = 2.0
+
+[node name="NavPoint4" type="Marker2D" parent="NavMesh/Col1"]
+position = Vector2(50, 234)
+gizmo_extents = 2.0
+
+[node name="NavPoint5" type="Marker2D" parent="NavMesh/Col1"]
+position = Vector2(50, 298)
+gizmo_extents = 2.0
+
+[node name="NavPoint6" type="Marker2D" parent="NavMesh/Col1"]
+position = Vector2(50, 362)
+gizmo_extents = 2.0
+
+[node name="NavPoint7" type="Marker2D" parent="NavMesh/Col1"]
+position = Vector2(50, 426)
+gizmo_extents = 2.0
+
+[node name="Col2" type="Node2D" parent="NavMesh"]
+position = Vector2(64, 8)
+
+[node name="NavPoint" type="Marker2D" parent="NavMesh/Col2"]
+position = Vector2(50, 42)
+gizmo_extents = 2.0
+
+[node name="NavPoint2" type="Marker2D" parent="NavMesh/Col2"]
+position = Vector2(50, 106)
+gizmo_extents = 2.0
+
+[node name="NavPoint3" type="Marker2D" parent="NavMesh/Col2"]
+position = Vector2(50, 170)
+gizmo_extents = 2.0
+
+[node name="NavPoint4" type="Marker2D" parent="NavMesh/Col2"]
+position = Vector2(50, 234)
+gizmo_extents = 2.0
+
+[node name="NavPoint5" type="Marker2D" parent="NavMesh/Col2"]
+position = Vector2(50, 298)
+gizmo_extents = 2.0
+
+[node name="NavPoint6" type="Marker2D" parent="NavMesh/Col2"]
+position = Vector2(50, 362)
+gizmo_extents = 2.0
+
+[node name="NavPoint7" type="Marker2D" parent="NavMesh/Col2"]
+position = Vector2(50, 426)
+gizmo_extents = 2.0
+
+[node name="Col3" type="Node2D" parent="NavMesh"]
+position = Vector2(144, 8)
+
+[node name="NavPoint" type="Marker2D" parent="NavMesh/Col3"]
+position = Vector2(50, 42)
+gizmo_extents = 2.0
+
+[node name="NavPoint2" type="Marker2D" parent="NavMesh/Col3"]
+position = Vector2(50, 106)
+gizmo_extents = 2.0
+
+[node name="NavPoint3" type="Marker2D" parent="NavMesh/Col3"]
+position = Vector2(50, 170)
+gizmo_extents = 2.0
+
+[node name="NavPoint4" type="Marker2D" parent="NavMesh/Col3"]
+position = Vector2(50, 234)
+gizmo_extents = 2.0
+
+[node name="NavPoint5" type="Marker2D" parent="NavMesh/Col3"]
+position = Vector2(50, 298)
+gizmo_extents = 2.0
+
+[node name="NavPoint6" type="Marker2D" parent="NavMesh/Col3"]
+position = Vector2(50, 362)
+gizmo_extents = 2.0
+
+[node name="NavPoint7" type="Marker2D" parent="NavMesh/Col3"]
+position = Vector2(50, 426)
+gizmo_extents = 2.0
+
+[node name="Col4" type="Node2D" parent="NavMesh"]
+position = Vector2(224, 8)
+
+[node name="NavPoint" type="Marker2D" parent="NavMesh/Col4"]
+position = Vector2(50, 42)
+gizmo_extents = 2.0
+
+[node name="NavPoint2" type="Marker2D" parent="NavMesh/Col4"]
+position = Vector2(50, 106)
+gizmo_extents = 2.0
+
+[node name="NavPoint3" type="Marker2D" parent="NavMesh/Col4"]
+position = Vector2(50, 170)
+gizmo_extents = 2.0
+
+[node name="NavPoint4" type="Marker2D" parent="NavMesh/Col4"]
+position = Vector2(50, 234)
+gizmo_extents = 2.0
+
+[node name="NavPoint5" type="Marker2D" parent="NavMesh/Col4"]
+position = Vector2(50, 298)
+gizmo_extents = 2.0
+
+[node name="NavPoint6" type="Marker2D" parent="NavMesh/Col4"]
+position = Vector2(50, 362)
+gizmo_extents = 2.0
+
+[node name="NavPoint7" type="Marker2D" parent="NavMesh/Col4"]
+position = Vector2(50, 426)
+gizmo_extents = 2.0
+
+[node name="Col5" type="Node2D" parent="NavMesh"]
+position = Vector2(304, 8)
+
+[node name="NavPoint" type="Marker2D" parent="NavMesh/Col5"]
+position = Vector2(50, 42)
+gizmo_extents = 2.0
+
+[node name="NavPoint2" type="Marker2D" parent="NavMesh/Col5"]
+position = Vector2(50, 106)
+gizmo_extents = 2.0
+
+[node name="NavPoint3" type="Marker2D" parent="NavMesh/Col5"]
+position = Vector2(50, 170)
+gizmo_extents = 2.0
+
+[node name="NavPoint4" type="Marker2D" parent="NavMesh/Col5"]
+position = Vector2(50, 234)
+gizmo_extents = 2.0
+
+[node name="NavPoint5" type="Marker2D" parent="NavMesh/Col5"]
+position = Vector2(50, 298)
+gizmo_extents = 2.0
+
+[node name="NavPoint6" type="Marker2D" parent="NavMesh/Col5"]
+position = Vector2(50, 362)
+gizmo_extents = 2.0
+
+[node name="NavPoint7" type="Marker2D" parent="NavMesh/Col5"]
+position = Vector2(50, 426)
+gizmo_extents = 2.0
+
+[node name="Col6" type="Node2D" parent="NavMesh"]
+position = Vector2(384, 8)
+
+[node name="NavPoint" type="Marker2D" parent="NavMesh/Col6"]
+position = Vector2(50, 42)
+gizmo_extents = 2.0
+
+[node name="NavPoint2" type="Marker2D" parent="NavMesh/Col6"]
+position = Vector2(50, 106)
+gizmo_extents = 2.0
+
+[node name="NavPoint3" type="Marker2D" parent="NavMesh/Col6"]
+position = Vector2(50, 170)
+gizmo_extents = 2.0
+
+[node name="NavPoint4" type="Marker2D" parent="NavMesh/Col6"]
+position = Vector2(50, 234)
+gizmo_extents = 2.0
+
+[node name="NavPoint5" type="Marker2D" parent="NavMesh/Col6"]
+position = Vector2(50, 298)
+gizmo_extents = 2.0
+
+[node name="NavPoint6" type="Marker2D" parent="NavMesh/Col6"]
+position = Vector2(50, 362)
+gizmo_extents = 2.0
+
+[node name="NavPoint7" type="Marker2D" parent="NavMesh/Col6"]
+position = Vector2(50, 426)
+gizmo_extents = 2.0
+
+[node name="Col7" type="Node2D" parent="NavMesh"]
+position = Vector2(464, 8)
+
+[node name="NavPoint" type="Marker2D" parent="NavMesh/Col7"]
+position = Vector2(50, 42)
+gizmo_extents = 2.0
+
+[node name="NavPoint2" type="Marker2D" parent="NavMesh/Col7"]
+position = Vector2(50, 106)
+gizmo_extents = 2.0
+
+[node name="NavPoint3" type="Marker2D" parent="NavMesh/Col7"]
+position = Vector2(50, 170)
+gizmo_extents = 2.0
+
+[node name="NavPoint4" type="Marker2D" parent="NavMesh/Col7"]
+position = Vector2(50, 234)
+gizmo_extents = 2.0
+
+[node name="NavPoint5" type="Marker2D" parent="NavMesh/Col7"]
+position = Vector2(50, 298)
+gizmo_extents = 2.0
+
+[node name="NavPoint6" type="Marker2D" parent="NavMesh/Col7"]
+position = Vector2(50, 362)
+gizmo_extents = 2.0
+
+[node name="NavPoint7" type="Marker2D" parent="NavMesh/Col7"]
+position = Vector2(50, 426)
+gizmo_extents = 2.0
+
+[node name="Col8" type="Node2D" parent="NavMesh"]
+position = Vector2(544, 8)
+
+[node name="NavPoint" type="Marker2D" parent="NavMesh/Col8"]
+position = Vector2(50, 42)
+gizmo_extents = 2.0
+
+[node name="NavPoint2" type="Marker2D" parent="NavMesh/Col8"]
+position = Vector2(50, 106)
+gizmo_extents = 2.0
+
+[node name="NavPoint3" type="Marker2D" parent="NavMesh/Col8"]
+position = Vector2(50, 170)
+gizmo_extents = 2.0
+
+[node name="NavPoint4" type="Marker2D" parent="NavMesh/Col8"]
+position = Vector2(50, 234)
+gizmo_extents = 2.0
+
+[node name="NavPoint5" type="Marker2D" parent="NavMesh/Col8"]
+position = Vector2(50, 298)
+gizmo_extents = 2.0
+
+[node name="NavPoint6" type="Marker2D" parent="NavMesh/Col8"]
+position = Vector2(50, 362)
+gizmo_extents = 2.0
+
+[node name="NavPoint7" type="Marker2D" parent="NavMesh/Col8"]
+position = Vector2(50, 426)
+gizmo_extents = 2.0
+
+[node name="Col9" type="Node2D" parent="NavMesh"]
+position = Vector2(624, 8)
+
+[node name="NavPoint" type="Marker2D" parent="NavMesh/Col9"]
+position = Vector2(50, 42)
+gizmo_extents = 2.0
+
+[node name="NavPoint2" type="Marker2D" parent="NavMesh/Col9"]
+position = Vector2(50, 106)
+gizmo_extents = 2.0
+
+[node name="NavPoint3" type="Marker2D" parent="NavMesh/Col9"]
+position = Vector2(50, 170)
+gizmo_extents = 2.0
+
+[node name="NavPoint4" type="Marker2D" parent="NavMesh/Col9"]
+position = Vector2(50, 234)
+gizmo_extents = 2.0
+
+[node name="NavPoint5" type="Marker2D" parent="NavMesh/Col9"]
+position = Vector2(50, 298)
+gizmo_extents = 2.0
+
+[node name="NavPoint6" type="Marker2D" parent="NavMesh/Col9"]
+position = Vector2(50, 362)
+gizmo_extents = 2.0
+
+[node name="NavPoint7" type="Marker2D" parent="NavMesh/Col9"]
+position = Vector2(50, 426)
+gizmo_extents = 2.0
+
+[node name="EnemySpawner" type="Path2D" parent="."]
+curve = SubResource("Curve2D_rdftt")
+
+[node name="EnemySpawnerPath" type="PathFollow2D" parent="EnemySpawner"]
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="HUD" parent="." instance=ExtResource("5_lcq48")]
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_gfwp1")
+volume_db = 5.0
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_uwvox")
+volume_db = 2.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 15.0
+offset_bottom = 15.0
+color = Color(0.780822, 0.000471874, 0.780816, 1)
+
+[connection signal="playerHit" from="Player" to="." method="_on_player_player_hit"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="playButtonPressed" from="HUD" to="." method="_on_hud_play_button_pressed"]
