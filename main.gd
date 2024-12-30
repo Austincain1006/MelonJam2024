@@ -64,12 +64,14 @@ func startGame():
 		enemy.queue_free()
 	$EnemySpawnTimer.start()
 	$Player.show()
+	$Player.mayFire = true
 	score = 0
 
 
 func endGame():
 	$EnemySpawnTimer.stop()
 	$Player.hide()
+	$Player.mayFire = false
 	$HUD.showGameOver()
 	
 

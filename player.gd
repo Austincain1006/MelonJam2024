@@ -11,19 +11,21 @@ var rotationDirection
 var cannonFired
 var fieldMagnitude = 0.2
 var magneticRadius = 50
+var mayFire
 
 
 func _ready():
 	cannonFired = false
+	mayFire = false
 	ionScene = load("res://ion.tscn")
 	hide()
 
 
 func _process(delta):
 	# Get Mouse Input for Cannon Firing
-	if Input.is_action_pressed("FirePositive"):
+	if Input.is_action_pressed("FirePositive") && mayFire:
 		fire(true)
-	elif Input.is_action_pressed("FireNegative"):
+	elif Input.is_action_pressed("FireNegative") && mayFire:
 		fire(false)
 
 
