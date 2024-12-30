@@ -1,8 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cn3iy67pv1sl8"]
+[gd_scene load_steps=15 format=3 uid="uid://cn3iy67pv1sl8"]
 
 [ext_resource type="Texture2D" uid="uid://byvhqr2213l2k" path="res://Art/Enemy.png" id="1_kbdl0"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_pv5fg"]
 [ext_resource type="AudioStream" uid="uid://bw3b6vcxgjyym" path="res://Art/ionBlast.wav" id="3_xi7gd"]
+[ext_resource type="Texture2D" uid="uid://c0ivld7kgpih0" path="res://Art/explosion1.png" id="4_b83qy"]
+[ext_resource type="Texture2D" uid="uid://xhhp6237a0oy" path="res://Art/explosion0.png" id="4_dt42p"]
+[ext_resource type="Texture2D" uid="uid://djxrs3fpcd3gv" path="res://Art/explosion2.png" id="5_lgpa7"]
+[ext_resource type="Texture2D" uid="uid://bcbap3cuchtqu" path="res://Art/explosion3.png" id="6_pj8ci"]
+[ext_resource type="Texture2D" uid="uid://swfhvram573d" path="res://Art/explosion4.png" id="7_m65kd"]
+[ext_resource type="Texture2D" uid="uid://bubxlbwmfhhj5" path="res://Art/explosion5.png" id="8_suocy"]
+[ext_resource type="Texture2D" uid="uid://cfbgq5s4ersjn" path="res://Art/explosion6.png" id="10_sbaa4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqla"]
 radius = 27.0185
@@ -13,10 +20,39 @@ size = Vector2(250, 125)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5f5k"]
 size = Vector2(250, 125)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_hb4h1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dt42p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_b83qy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lgpa7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pj8ci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_m65kd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_suocy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_sbaa4")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 14.0
+}]
+
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_pv5fg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="CharacterModel" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_kbdl0")
 
@@ -49,6 +85,14 @@ autostart = true
 
 [node name="IonBlasterSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_xi7gd")
+
+[node name="ExplosionAnimation" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_hb4h1")
+animation = &"explode"
+frame = 6
+frame_progress = 1.0
 
 [connection signal="timeout" from="CannonTimer" to="." method="_on_cannon_timer_timeout"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

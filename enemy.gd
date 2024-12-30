@@ -24,6 +24,7 @@ func _ready():
 	targetRotation = 0
 	setPersonality()
 	$RotateTimer.timeout.emit()
+	$ExplosionAnimation.hide()
 
 
 func _physics_process(delta):
@@ -37,7 +38,24 @@ func _physics_process(delta):
 # Called when Enemy is Hit
 func kill():
 	enemyDestroyed.emit()
+	disable()
+	$ExplosionAnimation.show()
+	$ExplosionAnimation.play()
+	await get_tree().create_timer(2.0).timeout
+	#await $ExplosionAnimation.animation_finished
+	hide()
 	queue_free()
+
+
+# Disables Enemy, to be done before queue_free() executes
+func disable():
+	collision_mask = 0
+	collision_layer = 0
+	$CharacterModel.hide()
+	speed = 0
+	mayFire = false
+	fieldMagnitude = 0
+	magneticRadius = 0
 
 
 # Fires an Ion at the Player
