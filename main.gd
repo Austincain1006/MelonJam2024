@@ -63,6 +63,7 @@ func startGame():
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
 		enemy.queue_free()
 	$EnemySpawnTimer.start()
+	$Player.global_position = $Spawnpoint.global_position
 	$Player.show()
 	$Player.mayFire = true
 	score = 0
@@ -73,6 +74,8 @@ func endGame():
 	$Player.hide()
 	$Player.mayFire = false
 	$HUD.showGameOver()
+	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		enemy.mayFire = false
 	
 
 

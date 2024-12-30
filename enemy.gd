@@ -10,9 +10,10 @@ var magneticRadius = 50
 var ionScene : PackedScene
 var speed = 4000
 var destination
-
+var mayFire
 
 func _ready():
+	mayFire = true
 	playerReference = get_tree().get_first_node_in_group("Player")
 	navMesh = get_tree().get_root().get_node("Main").getNavMeshArray()
 	ionScene = load("res://ion.tscn")
@@ -47,7 +48,8 @@ func shootCannon():
 
 
 func _on_cannon_timer_timeout():
-	shootCannon()
+	if mayFire:
+		shootCannon()
 
 
 # Returns Random NavPoint from Main as Area2D Node
