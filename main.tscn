@@ -10,7 +10,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_rdftt"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 720, 480, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, -24, -24, 0, 0, 0, 0, 744, -24, 0, 0, 0, 0, 744, 504, 0, 0, 0, 0, -24, 504, 0, 0, 0, 0, -24, -24)
 }
 point_count = 5
 
@@ -28,7 +28,7 @@ texture = ExtResource("3_lycsc")
 position = Vector2(665, 223)
 
 [node name="Spawnpoint" type="Marker2D" parent="."]
-position = Vector2(350, 240)
+position = Vector2(360, 240)
 
 [node name="NavMesh" type="Node" parent="."]
 
@@ -315,6 +315,7 @@ gizmo_extents = 2.0
 curve = SubResource("Curve2D_rdftt")
 
 [node name="EnemySpawnerPath" type="PathFollow2D" parent="EnemySpawner"]
+position = Vector2(-24, -24)
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 4.0

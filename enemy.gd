@@ -89,7 +89,6 @@ func setPersonality():
 
 
 func _on_rotate_timer_timeout():
-	print("rotate!")
 	targetRotation = randf_range(0, 2 * PI)
 
 

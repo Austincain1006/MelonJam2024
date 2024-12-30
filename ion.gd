@@ -2,10 +2,12 @@
 # Simulates charged particle. Has collisions and is affected by magnetic fields.
 extends Area2D
 
-@export var speed = 200
+@export var speed = 170
 var velocity
 var isPositiveCharge = true
 var immunityMask
+var fieldMagnitude = 0.05
+var magneticRadius = 64
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,8 +27,10 @@ func setCharge(charge):
 	# Set Texture of Ion to Match Charge
 	if charge == false:
 		$Sprite2D.texture = load("res://Art/IonNegative.png")
+		$MagneticField.add_to_group("NegativeField")
 	else:
 		$Sprite2D.texture = load("res://Art/IonPositive.png")
+		$MagneticField.add_to_group("PositiveField")
 
 
 func setVelocity(newVel):
@@ -47,6 +51,12 @@ func _on_body_entered(body):
 		queue_free()
 	else:
 		pass
+
+
+func _on_area_entered(area):
+	if area.is_in_group("Ion"):
+		if area != $MagneticField && (area.isPositiveCharge != isPositiveCharge):
+			queue_free()
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

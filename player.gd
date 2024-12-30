@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 signal playerHit
 
-@export var speed = 200
+@export var speed = 169
 @export var rotateSpeed = 4.0
 @export var ionScene : PackedScene
 var rotationDirection
