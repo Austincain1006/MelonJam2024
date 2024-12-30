@@ -1,4 +1,5 @@
 # main.gd   by Austin Cain @ 12/29/2024
+# Composes the other Scenes together to make Feudalactic
 extends Node
 
 @export var enemyScene : PackedScene
@@ -24,11 +25,6 @@ func getNavMeshArray():
 	navMesh[6] = $NavMesh/Col7.get_children()
 	navMesh[7] = $NavMesh/Col8.get_children()
 	navMesh[8] = $NavMesh/Col9.get_children()
-	
-	#for c in numCols:
-		#print("----> ", c)
-		#for r in numRows:
-			#print(navMesh[c][r])
 	
 	return navMesh
 
@@ -66,11 +62,8 @@ func startGame():
 		enemy.queue_free()
 	$EnemySpawnTimer.start()
 	$Player.global_position = $Spawnpoint.global_position
-	$Player.TogglePlayerModel()
-	$Player.mayFire = true
-	$Player.collision_layer = 1
-	$Player.collision_mask = 1
-	$Player.speed = 169
+	$Player.rotation = 0
+	unFreezePlayer()
 	numEnemies = 0
 	score = 0
 	$HUD.setScore(score)
@@ -79,11 +72,7 @@ func startGame():
 # Resets the Stage and Displays Game Over
 func endGame():
 	$EnemySpawnTimer.stop()
-	$Player.TogglePlayerModel()
-	$Player.mayFire = false
-	$Player.collision_layer = 0
-	$Player.collision_mask = 0
-	$Player.speed = 0
+	freezePlayer()
 	
 	# Adjust & Save High Score
 	if score > $HUD.highScore:
@@ -120,3 +109,21 @@ func enemyCap():
 		return 5
 	else:
 		return 1
+
+
+# "Deletes" the Player without actually Deleting them
+func freezePlayer():
+	$Player.TogglePlayerModel()
+	$Player.mayFire = false
+	$Player.collision_layer = 0
+	$Player.collision_mask = 0
+	$Player.speed = 0
+
+
+# Re-enables the player
+func unFreezePlayer():
+	$Player.TogglePlayerModel()
+	$Player.mayFire = true
+	$Player.collision_layer = 1
+	$Player.collision_mask = 1
+	$Player.speed = 169
