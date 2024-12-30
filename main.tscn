@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cn7ird88eupwv"]
+[gd_scene load_steps=9 format=3 uid="uid://cn7ird88eupwv"]
 
 [ext_resource type="PackedScene" uid="uid://cthywtjlqfrab" path="res://Player.tscn" id="1_2lql5"]
 [ext_resource type="Script" path="res://main.gd" id="1_trih3"]
+[ext_resource type="Texture2D" uid="uid://ni2v1hw6gh4w" path="res://Art/space4.png" id="3_lycsc"]
 [ext_resource type="PackedScene" uid="uid://bhjprg3ckgfnl" path="res://hud.tscn" id="4_kjf0n"]
 [ext_resource type="PackedScene" uid="uid://cn3iy67pv1sl8" path="res://enemy.tscn" id="4_y53f3"]
 [ext_resource type="AudioStream" uid="uid://bpthdmgbw27x5" path="res://Art/gameOver.wav" id="5_v86bp"]
@@ -16,6 +17,12 @@ point_count = 5
 [node name="Main" type="Node"]
 script = ExtResource("1_trih3")
 enemyScene = ExtResource("4_y53f3")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(336, 240)
+scale = Vector2(2.83709, 1.8914)
+texture = ExtResource("3_lycsc")
 
 [node name="Player" parent="." instance=ExtResource("1_2lql5")]
 position = Vector2(665, 223)

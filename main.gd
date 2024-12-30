@@ -48,7 +48,7 @@ func spawnEnemy():
 
 func _on_enemy_spawn_timer_timeout():
 	# Number of Enemies Scale with Score
-	if (numEnemies < MAX_ENEMIES) && (numEnemies < (score / 2) + 1):
+	if (numEnemies < MAX_ENEMIES) && (numEnemies < (score / 3) + 1):
 		spawnEnemy()
 		numEnemies += 1
 
