@@ -19,10 +19,10 @@ func _ready():
 	cannonFired = false
 	mayFire = false
 	ionScene = load("res://ion.tscn")
-	var playerRadius = $PlanetPrototype.get_rect().size.x / 2
+	var playerRadius = $PlayerModel.get_rect().size.x / 2
 	boundaryStart = Vector2(0 + playerRadius, 0 + playerRadius)
 	boundaryEnd = Vector2(get_viewport_rect().size.x - playerRadius, get_viewport_rect().size.y - playerRadius)
-	hide()
+	TogglePlayerModel()
 
 
 func _process(delta):
@@ -91,3 +91,10 @@ func magneticField(body, delta):
 
 func killPlayer():
 	playerHit.emit()
+	$ExplosionAnimation.play()
+
+func TogglePlayerModel():
+	if $PlayerModel.visible:
+		$PlayerModel.hide()
+	else:
+		$PlayerModel.show()

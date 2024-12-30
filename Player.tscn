@@ -1,8 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cthywtjlqfrab"]
+[gd_scene load_steps=15 format=3 uid="uid://cthywtjlqfrab"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ldy8u"]
 [ext_resource type="Texture2D" uid="uid://b11hkv0njxo0h" path="res://Art/PlayerModelFinal.png" id="2_s5k7j"]
 [ext_resource type="AudioStream" uid="uid://bw3b6vcxgjyym" path="res://Art/ionBlast.wav" id="3_g125u"]
+[ext_resource type="Texture2D" uid="uid://xhhp6237a0oy" path="res://Art/explosion0.png" id="4_3hgyf"]
+[ext_resource type="Texture2D" uid="uid://c0ivld7kgpih0" path="res://Art/explosion1.png" id="5_ro8gv"]
+[ext_resource type="Texture2D" uid="uid://djxrs3fpcd3gv" path="res://Art/explosion2.png" id="6_2e24y"]
+[ext_resource type="Texture2D" uid="uid://bcbap3cuchtqu" path="res://Art/explosion3.png" id="7_3gw2m"]
+[ext_resource type="Texture2D" uid="uid://swfhvram573d" path="res://Art/explosion4.png" id="8_s7ecu"]
+[ext_resource type="Texture2D" uid="uid://bubxlbwmfhhj5" path="res://Art/explosion5.png" id="9_t51n3"]
+[ext_resource type="Texture2D" uid="uid://cfbgq5s4ersjn" path="res://Art/explosion6.png" id="10_vs3kp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0m041"]
 radius = 33.0
@@ -13,10 +20,39 @@ size = Vector2(250, 125)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tgqcn"]
 size = Vector2(250, 125)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ko1ma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_3hgyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ro8gv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2e24y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3gw2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s7ecu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_t51n3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vs3kp")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 14.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_ldy8u")
 
-[node name="PlanetPrototype" type="Sprite2D" parent="."]
+[node name="PlayerModel" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_s5k7j")
@@ -47,6 +83,14 @@ position = Vector2(-48, 0)
 
 [node name="IonBlasterSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_g125u")
+
+[node name="ExplosionAnimation" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ko1ma")
+animation = &"explode"
+frame = 6
+frame_progress = 1.0
 
 [connection signal="area_entered" from="PositivePole" to="." method="_on_positive_pole_area_entered"]
 [connection signal="area_entered" from="NegativePole" to="." method="_on_negative_pole_area_entered"]

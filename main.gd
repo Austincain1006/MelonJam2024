@@ -65,7 +65,7 @@ func startGame():
 		enemy.queue_free()
 	$EnemySpawnTimer.start()
 	$Player.global_position = $Spawnpoint.global_position
-	$Player.show()
+	$Player.TogglePlayerModel()
 	$Player.mayFire = true
 	numEnemies = 0
 	score = 0
@@ -74,7 +74,7 @@ func startGame():
 
 func endGame():
 	$EnemySpawnTimer.stop()
-	$Player.hide()
+	$Player.TogglePlayerModel()
 	$Player.mayFire = false
 	
 	# Adjust & Save High Score
