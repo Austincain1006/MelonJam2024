@@ -60,6 +60,7 @@ func enemyDestroyedObserver():
 	numEnemies += -1
 
 
+# Sets up the Level for a New Run
 func startGame():
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
 		enemy.queue_free()
@@ -67,15 +68,22 @@ func startGame():
 	$Player.global_position = $Spawnpoint.global_position
 	$Player.TogglePlayerModel()
 	$Player.mayFire = true
+	$Player.collision_layer = 1
+	$Player.collision_mask = 1
+	$Player.speed = 169
 	numEnemies = 0
 	score = 0
 	$HUD.setScore(score)
 
 
+# Resets the Stage and Displays Game Over
 func endGame():
 	$EnemySpawnTimer.stop()
 	$Player.TogglePlayerModel()
 	$Player.mayFire = false
+	$Player.collision_layer = 0
+	$Player.collision_mask = 0
+	$Player.speed = 0
 	
 	# Adjust & Save High Score
 	if score > $HUD.highScore:
