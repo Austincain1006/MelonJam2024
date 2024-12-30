@@ -27,10 +27,10 @@ func setCharge(charge):
 	
 	# Set Texture of Ion to Match Charge
 	if charge == false:
-		$Sprite2D.texture = load("res://Art/IonNegative.png")
+		$Sprite2D.texture = load("res://Art/Sprites/IonNegative.png")
 		$MagneticField.add_to_group("NegativeField")
 	else:
-		$Sprite2D.texture = load("res://Art/IonPositive.png")
+		$Sprite2D.texture = load("res://Art/Sprites/IonPositive.png")
 		$MagneticField.add_to_group("PositiveField")
 
 
