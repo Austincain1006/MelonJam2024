@@ -15,6 +15,8 @@ var targetRotation
 var rotationSpeed = 0.5
 var mayFire
 
+var cannonTimer
+
 
 func _ready():
 	mayFire = true
@@ -26,6 +28,10 @@ func _ready():
 	setPersonality()
 	$RotateTimer.timeout.emit()
 	$ExplosionAnimation.hide()
+	if randf() < 0.9:
+		print("Shot Early!")
+		$CannonTimer.wait_time = cannonTimer / 4.0
+	$CannonTimer.start()
 
 
 func _physics_process(delta):
@@ -60,6 +66,8 @@ func disable():
 
 # Fires an Ion at the Player
 func shootCannon():
+	$CannonTimer.wait_time = cannonTimer
+	$CannonTimer.start()
 	var ion = ionScene.instantiate()
 	
 	ion.global_position = global_position
@@ -77,6 +85,7 @@ func shootCannon():
 func _on_cannon_timer_timeout():
 	if mayFire:
 		shootCannon()
+		
 
 
 # Returns Random NavPoint from Main as Area2D Node
@@ -99,7 +108,8 @@ func setDestination(dest):
 # Sets Unique Traits to Each Enemy
 func setPersonality():
 	$MoveTimer.wait_time = randf_range(3, 7)
-	$CannonTimer.wait_time = randf_range(4,7)
+	cannonTimer = randf_range(4,7)
+	$CannonTimer.wait_time = cannonTimer
 	$RotateTimer.wait_time = randf_range(2, 9)
 	rotationSpeed = randf_range(0.2, 1)
 	speed = randi_range(3000, 5000)

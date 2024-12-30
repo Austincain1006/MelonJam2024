@@ -73,7 +73,6 @@ shape = SubResource("RectangleShape2D_o5f5k")
 
 [node name="CannonTimer" type="Timer" parent="."]
 wait_time = 4.0
-autostart = true
 
 [node name="MoveTimer" type="Timer" parent="."]
 wait_time = 4.0
