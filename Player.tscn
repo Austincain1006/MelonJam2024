@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cthywtjlqfrab"]
+[gd_scene load_steps=7 format=3 uid="uid://cthywtjlqfrab"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ldy8u"]
 [ext_resource type="Texture2D" uid="uid://b11hkv0njxo0h" path="res://Art/PlayerModelFinal.png" id="2_s5k7j"]
+[ext_resource type="AudioStream" uid="uid://bw3b6vcxgjyym" path="res://Art/ionBlast.wav" id="3_g125u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0m041"]
 radius = 33.0
@@ -43,6 +44,9 @@ one_shot = true
 
 [node name="CannonBarrel" type="Marker2D" parent="."]
 position = Vector2(-48, 0)
+
+[node name="IonBlasterSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_g125u")
 
 [connection signal="area_entered" from="PositivePole" to="." method="_on_positive_pole_area_entered"]
 [connection signal="area_entered" from="NegativePole" to="." method="_on_negative_pole_area_entered"]

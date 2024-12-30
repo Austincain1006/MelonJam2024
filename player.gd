@@ -58,6 +58,8 @@ func fire(charge):
 	ion.setMask(1)
 	ion.setVelocity(-$CannonBarrel.global_transform.x)
 	
+	$IonBlasterSound.play()
+	
 	cannonFired = true
 	$CannonTimer.start()
 

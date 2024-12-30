@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn3iy67pv1sl8"]
+[gd_scene load_steps=7 format=3 uid="uid://cn3iy67pv1sl8"]
 
 [ext_resource type="Texture2D" uid="uid://byvhqr2213l2k" path="res://Art/Enemy.png" id="1_kbdl0"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_pv5fg"]
+[ext_resource type="AudioStream" uid="uid://bw3b6vcxgjyym" path="res://Art/ionBlast.wav" id="3_xi7gd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqla"]
 
@@ -44,6 +45,9 @@ autostart = true
 [node name="RotateTimer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[node name="IonBlasterSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xi7gd")
 
 [connection signal="timeout" from="CannonTimer" to="." method="_on_cannon_timer_timeout"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

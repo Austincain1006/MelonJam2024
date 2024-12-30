@@ -66,6 +66,7 @@ func startGame():
 	$Player.global_position = $Spawnpoint.global_position
 	$Player.show()
 	$Player.mayFire = true
+	numEnemies = 0
 	score = 0
 	$HUD.setScore(score)
 

@@ -51,6 +51,8 @@ func shootCannon():
 	ion.setMask(2)
 	ion.setVelocity( (playerReference.position - position).normalized() )
 	
+	$IonBlasterSound.play()
+	
 	ion.add_to_group("Ion")
 
 
