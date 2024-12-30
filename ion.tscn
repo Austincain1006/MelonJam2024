@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bg1a2u5l6x3s5"]
 
-[ext_resource type="Texture2D" uid="uid://dc2xkygdnxqac" path="res://Art/IonPositive.png" id="1_0itf2"]
+[ext_resource type="Texture2D" uid="uid://dc2xkygdnxqac" path="res://Art/Sprites/IonPositive.png" id="1_0itf2"]
 [ext_resource type="Script" path="res://ion.gd" id="1_q2que"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eu4og"]
