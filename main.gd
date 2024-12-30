@@ -63,6 +63,7 @@ func startGame():
 	$EnemySpawnTimer.start()
 	$Player.global_position = $Spawnpoint.global_position
 	$Player.rotation = 0
+	$MusicPlayer.play()
 	unFreezePlayer()
 	numEnemies = 0
 	score = 0
@@ -81,6 +82,7 @@ func endGame():
 	else:
 		$HUD.newHighScore = false
 	
+	$MusicPlayer.stop()
 	$HUD.showGameOver()
 	$GameOverSound.play()
 	
