@@ -4,8 +4,8 @@ extends CharacterBody2D
 signal enemyDestroyed
 
 
-var fieldMagnitude = 0.2
-var magneticRadius = 50
+var fieldMagnitude = 0.3
+var magneticRadius = 100
 @onready var playerReference
 @onready var navMesh = [] 
 var ionScene : PackedScene

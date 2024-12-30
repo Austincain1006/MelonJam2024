@@ -9,8 +9,8 @@ signal playerHit
 @export var ionScene : PackedScene
 var rotationDirection
 var cannonFired
-var fieldMagnitude = 0.2
-var magneticRadius = 50
+var fieldMagnitude = 0.3
+var magneticRadius = 100
 var mayFire
 var boundaryStart
 var boundaryEnd

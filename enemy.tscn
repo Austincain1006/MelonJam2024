@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bw3b6vcxgjyym" path="res://Art/ionBlast.wav" id="3_xi7gd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqla"]
+radius = 27.0185
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4q65"]
 size = Vector2(250, 125)
@@ -15,12 +16,12 @@ size = Vector2(250, 125)
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_pv5fg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_qhqla")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_kbdl0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qhqla")
 
 [node name="PositivePole" type="Area2D" parent="." groups=["PositiveField"]]
 
