@@ -28,7 +28,7 @@ func _ready():
 	setPersonality()
 	$RotateTimer.timeout.emit()
 	$ExplosionAnimation.hide()
-	if randf() < 0.9:
+	if randf() < 0.3:
 		print("Shot Early!")
 		$CannonTimer.wait_time = cannonTimer / 4.0
 	$CannonTimer.start()

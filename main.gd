@@ -46,8 +46,10 @@ func _on_enemy_spawn_timer_timeout():
 	if numEnemies < enemyCap():
 		spawnEnemy()
 		numEnemies += 1
+		
 	# Chance to Spawn Multiple Enemies if allowed
 	if (numEnemies < enemyCap() && randf() < 0.5):
+		get_tree().create_timer($EnemySpawnTimer.wait_time / randf_range(3, 8))
 		spawnEnemy()
 		numEnemies += 1
 
