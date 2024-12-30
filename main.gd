@@ -55,5 +55,28 @@ func _on_enemy_spawn_timer_timeout():
 
 func enemyDestroyedObserver():
 	score += 1
+	$HUD.setScore(score)
 	numEnemies += -1
-	print("ENEMY DEAD ", numEnemies)
+
+
+func startGame():
+	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		enemy.queue_free()
+	$EnemySpawnTimer.start()
+	$Player.show()
+	score = 0
+
+
+func endGame():
+	$EnemySpawnTimer.stop()
+	$Player.hide()
+	$HUD.showGameOver()
+	
+
+
+func _on_hud_play_button_pressed():
+	startGame()
+
+
+func _on_player_player_hit():
+	endGame()

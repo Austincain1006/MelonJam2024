@@ -2,6 +2,8 @@
 # Player character, handles inputs, movements, and cannon fire.
 extends CharacterBody2D
 
+signal playerHit
+
 @export var speed = 200
 @export var rotateSpeed = 4.0
 @export var ionScene : PackedScene
@@ -14,6 +16,7 @@ var magneticRadius = 50
 func _ready():
 	cannonFired = false
 	ionScene = load("res://ion.tscn")
+	hide()
 
 
 func _process(delta):
@@ -72,3 +75,6 @@ func _on_cannon_timer_timeout():
 
 func magneticField(body, delta):
 	pass
+
+func killPlayer():
+	playerHit.emit()

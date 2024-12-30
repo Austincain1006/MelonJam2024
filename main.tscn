@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn7ird88eupwv"]
+[gd_scene load_steps=6 format=3 uid="uid://cn7ird88eupwv"]
 
 [ext_resource type="PackedScene" uid="uid://cthywtjlqfrab" path="res://Player.tscn" id="1_2lql5"]
 [ext_resource type="Script" path="res://main.gd" id="1_trih3"]
+[ext_resource type="PackedScene" uid="uid://bhjprg3ckgfnl" path="res://hud.tscn" id="4_kjf0n"]
 [ext_resource type="PackedScene" uid="uid://cn3iy67pv1sl8" path="res://enemy.tscn" id="4_y53f3"]
 
 [sub_resource type="Curve2D" id="Curve2D_rdftt"]
@@ -308,6 +309,9 @@ curve = SubResource("Curve2D_rdftt")
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 4.0
-autostart = true
 
+[node name="HUD" parent="." instance=ExtResource("4_kjf0n")]
+
+[connection signal="playerHit" from="Player" to="." method="_on_player_player_hit"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="playButtonPressed" from="HUD" to="." method="_on_hud_play_button_pressed"]

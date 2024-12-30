@@ -11,6 +11,13 @@ func _ready():
 func _on_button_pressed():
 	playButtonPressed.emit()
 	$Button.hide()
+	$Message.hide()
 
 func setScore(newScore):
-	$Score.text = newScore
+	$Score.text = str(newScore)
+
+func showGameOver():
+	$Message.text = "Game over!"
+	$Message.show()
+	await get_tree().create_timer(1.5).timeout
+	$Button.show()

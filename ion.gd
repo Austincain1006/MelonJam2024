@@ -2,8 +2,6 @@
 # Simulates charged particle. Has collisions and is affected by magnetic fields.
 extends Area2D
 
-signal playerHit
-
 @export var speed = 200
 var velocity
 var isPositiveCharge = true
@@ -42,7 +40,7 @@ func setSpeed(newSpeed):
 # Collision Handler
 func _on_body_entered(body):
 	if body.is_in_group("Player") && immunityMask != 1:
-		playerHit.emit()
+		body.killPlayer()
 		queue_free()
 	if body.is_in_group("Enemy") && immunityMask != 2:
 		body.kill()
