@@ -7,7 +7,6 @@ var numEnemies = 0
 var score = 0
 const MAX_ENEMIES = 5
 
-
 func getNavMeshArray():
 	var numRows = 7
 	var numCols = 9
@@ -45,6 +44,10 @@ func spawnEnemy():
 func _on_enemy_spawn_timer_timeout():
 	# Number of Enemies Scale with Score
 	if numEnemies < enemyCap():
+		spawnEnemy()
+		numEnemies += 1
+	# Chance to Spawn Multiple Enemies if allowed
+	if (numEnemies < enemyCap() && randf() < 0.5):
 		spawnEnemy()
 		numEnemies += 1
 
