@@ -48,7 +48,7 @@ func spawnEnemy():
 
 func _on_enemy_spawn_timer_timeout():
 	# Number of Enemies Scale with Score
-	if (numEnemies < MAX_ENEMIES) && (numEnemies < (score / 3) + 1):
+	if numEnemies < enemyCap():
 		spawnEnemy()
 		numEnemies += 1
 
@@ -76,10 +76,20 @@ func endGame():
 	$EnemySpawnTimer.stop()
 	$Player.hide()
 	$Player.mayFire = false
+	
+	# Adjust & Save High Score
+	if score > $HUD.highScore:
+		$HUD.newHighScore = true
+		$HUD.highScore = score
+	else:
+		$HUD.newHighScore = false
+	
 	$HUD.showGameOver()
+	$GameOverSound.play()
+	
+	# Prevent Enemies from Firing in Game Over Screen
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
 		enemy.mayFire = false
-	$GameOverSound.play()
 
 
 func _on_hud_play_button_pressed():
@@ -88,3 +98,17 @@ func _on_hud_play_button_pressed():
 
 func _on_player_player_hit():
 	endGame()
+
+
+# Returns the Enemy Cap, Scales with Player Score
+func enemyCap():
+	if score >= 3:
+		return 2
+	if score >= 7:
+		return 3
+	if score >= 12:
+		return 4
+	if score >= 20:
+		return 5
+	else:
+		return 1

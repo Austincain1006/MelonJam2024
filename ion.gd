@@ -54,6 +54,7 @@ func _on_body_entered(body):
 		pass
 
 
+# Handle Ion-to-Ion Collisions
 func _on_area_entered(area):
 	if area.is_in_group("Ion"):
 		if area != $MagneticField && (area.isPositiveCharge != isPositiveCharge):
@@ -105,6 +106,5 @@ func setMask(m):
 
 
 func _on_immunity_timer_timeout():
-	print(creator)
 	if !$MagneticField.get_overlapping_bodies().has(creator):
 		setMask(0)
