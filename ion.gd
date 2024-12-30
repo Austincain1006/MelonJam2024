@@ -65,6 +65,7 @@ func magneticForce(array):
 		if field.get_parent().is_in_group("Enemy") && immunityMask == 2:
 			continue
 		
+		
 		# Get Direction of Magnetic Force
 		var difference = global_position - field.global_position
 		var force = difference.normalized() * field.get_parent().fieldMagnitude

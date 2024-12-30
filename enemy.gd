@@ -18,6 +18,7 @@ func _ready():
 	navMesh = get_tree().get_root().get_node("Main").getNavMeshArray()
 	ionScene = load("res://ion.tscn")
 	destination = position
+	#$MoveTimer.wait_time = randf()
 
 
 func _physics_process(delta):

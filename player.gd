@@ -12,12 +12,16 @@ var cannonFired
 var fieldMagnitude = 0.2
 var magneticRadius = 50
 var mayFire
-
+var boundaryStart
+var boundaryEnd
 
 func _ready():
 	cannonFired = false
 	mayFire = false
 	ionScene = load("res://ion.tscn")
+	var playerRadius = $PlanetPrototype.get_rect().size.x / 2
+	boundaryStart = Vector2(0 + playerRadius, 0 + playerRadius)
+	boundaryEnd = Vector2(get_viewport_rect().size.x - playerRadius, get_viewport_rect().size.y - playerRadius)
 	hide()
 
 
@@ -28,6 +32,14 @@ func _process(delta):
 	elif Input.is_action_pressed("FireNegative") && mayFire:
 		fire(false)
 
+
+func _physics_process(delta):
+	getInput()
+	rotation += rotationDirection * rotateSpeed * delta
+	move_and_slide()
+	
+	global_position = global_position.clamp(boundaryStart, boundaryEnd)
+ #+ $PlanetPrototype.get_rect().size.x
 
 # Fire Ion Cannon
 func fire(charge):
@@ -50,12 +62,7 @@ func fire(charge):
 	$CannonTimer.start()
 
 
-func _physics_process(delta):
-	getInput()
-	rotation += rotationDirection * rotateSpeed * delta
-	move_and_slide()
-
-
+# Get Mouse Input from Player
 func getInput():
 	rotationDirection = Input.get_axis("RotateLeft", "RotateRight")
 	velocity = transform.x * Input.get_axis("MoveForward", "MoveBackward") * speed
