@@ -1,8 +1,8 @@
-# enemy.gd
+# enemy.gd by Austin Cain @ 12/28/2024
+# Enemy NPC that Attacks the Player
 extends CharacterBody2D
 
 signal enemyDestroyed
-
 
 var fieldMagnitude = 0.3
 var magneticRadius = 100
@@ -14,6 +14,7 @@ var destination
 var targetRotation
 var rotationSpeed = 0.5
 var mayFire
+
 
 func _ready():
 	mayFire = true
@@ -42,7 +43,6 @@ func kill():
 	$ExplosionAnimation.show()
 	$ExplosionAnimation.play()
 	await get_tree().create_timer(2.0).timeout
-	#await $ExplosionAnimation.animation_finished
 	hide()
 	queue_free()
 
@@ -69,8 +69,8 @@ func shootCannon():
 	ion.setMask(2)
 	ion.setVelocity( (playerReference.position - position).normalized() )
 	ion.creator = self
-	$IonBlasterSound.play()
 	
+	$IonBlasterSound.play()
 	ion.add_to_group("Ion")
 
 
@@ -102,6 +102,7 @@ func setPersonality():
 	$CannonTimer.wait_time = randf_range(4,7)
 	$RotateTimer.wait_time = randf_range(2, 9)
 	rotationSpeed = randf_range(0.2, 1)
+	speed = randi_range(3000, 5000)
 	targetRotation = randf_range(0, 2 * PI)
 	rotation = targetRotation
 

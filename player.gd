@@ -36,10 +36,9 @@ func _process(delta):
 func _physics_process(delta):
 	getInput()
 	rotation += rotationDirection * rotateSpeed * delta
-	move_and_slide()
 	
+	move_and_slide()
 	global_position = global_position.clamp(boundaryStart, boundaryEnd)
- #+ $PlanetPrototype.get_rect().size.x
 
 # Fire Ion Cannon
 func fire(charge):
@@ -54,10 +53,9 @@ func fire(charge):
 		ion.setCharge(false)
 	
 	owner.add_child(ion)
-	ion.transform = $CannonBarrel.global_transform
-	ion.setMask(1)
-	print(self)
 	ion.creator = self
+	ion.setMask(1)
+	ion.transform = $CannonBarrel.global_transform
 	ion.setVelocity(-$CannonBarrel.global_transform.x)
 	
 	$IonBlasterSound.play()
