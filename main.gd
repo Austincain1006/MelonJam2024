@@ -47,8 +47,8 @@ func spawnEnemy():
 
 
 func _on_enemy_spawn_timer_timeout():
-	#print("ENEMY SPAWNED")
-	if numEnemies < MAX_ENEMIES:
+	# Number of Enemies Scale with Score
+	if (numEnemies < MAX_ENEMIES) && (numEnemies < (score / 2) + 1):
 		spawnEnemy()
 		numEnemies += 1
 
@@ -67,6 +67,7 @@ func startGame():
 	$Player.show()
 	$Player.mayFire = true
 	score = 0
+	$HUD.setScore(score)
 
 
 func endGame():

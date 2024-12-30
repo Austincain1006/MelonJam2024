@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 signal enemyDestroyed
 
+
 var fieldMagnitude = 0.2
 var magneticRadius = 50
 @onready var playerReference
@@ -10,6 +11,8 @@ var magneticRadius = 50
 var ionScene : PackedScene
 var speed = 4000
 var destination
+var targetRotation
+var rotationSpeed = 0.5
 var mayFire
 
 func _ready():
@@ -18,7 +21,9 @@ func _ready():
 	navMesh = get_tree().get_root().get_node("Main").getNavMeshArray()
 	ionScene = load("res://ion.tscn")
 	destination = position
-	#$MoveTimer.wait_time = randf()
+	targetRotation = 0
+	setPersonality()
+	$RotateTimer.timeout.emit()
 
 
 func _physics_process(delta):
@@ -26,6 +31,7 @@ func _physics_process(delta):
 	# Only Move when Far from Destination (Prevents Jitter)
 	if !((position - destination).length() < 1):
 		move_and_slide()
+	rotateEnemy(delta)
 
 
 # Called when Enemy is Hit
@@ -68,3 +74,22 @@ func _on_move_timer_timeout():
 
 func setDestination(dest):
 	destination = dest
+
+
+# Sets Unique Traits to Each Enemy
+func setPersonality():
+	$MoveTimer.wait_time = randf_range(3, 7)
+	$CannonTimer.wait_time = randf_range(4,7)
+	$RotateTimer.wait_time = randf_range(2, 9)
+	rotationSpeed = randf_range(0.2, 1)
+	targetRotation = randf_range(0, 2 * PI)
+	rotation = targetRotation
+
+
+func _on_rotate_timer_timeout():
+	print("rotate!")
+	targetRotation = randf_range(0, 2 * PI)
+
+
+func rotateEnemy(delta):
+	rotation = lerp_angle(rotation, targetRotation, delta * rotationSpeed)
